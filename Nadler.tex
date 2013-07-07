@@ -14,6 +14,9 @@
 
 \newcommand\Sing{\operatorname{Sing}}
 \newcommand\Loc{\operatorname{Loc}}
+\newcommand\K{\sheaf K}%
+\newcommand\ld[1]{\check{#1}}
+\renewcommand\Gr{\operatorname{Gr}}
 
 \maketitle
 
@@ -469,6 +472,126 @@ We call $\Sing(\Loc_G(C)) \subseteq \rquot{(\Loc_G(C)' × \liealg g^*)}{G}$ th
 One expects that automorphic objects lead to coherent sheaves with nilpotent Arthur's parameters.
 
 \section{Hecke categories}
+
+Let $G$ be a reductive group and recall that the spherical Hecke algebra of $G$ is defined as
+\[
+    H_{\mathrm{sph}} = ℂ_c\left[ \dquot{G(ℤ_p)}{G(ℚ_p)}{G(ℤ_p)} \right].
+\]
+Attached to $G$ is its root datum
+\[
+    \left( Λ_G,\, \ld{Λ}_G,\, R_G, \ld R_G \right),
+\]
+consisting of the coweight lattice, the weight lattice, the coroots and the roots of $G$.
+Switching weights and coweights and roots and coroots, we obtain the Langlands dual group $\ld G$ of $G$.
+Recall that the Satake isomorphism is an isomorphism 
+\[
+    H_{\mathrm{sph}} \cong \O(\ld G)^{\ld G}
+\]
+of commutative algebras between the Hecke category of $G$ (with $*$) and the representation ring of $\ld G$ (with $\cdot$).
+The goal of this lecture is to discuss a geometric version of the Satake isomorphism.
+
+\subsection{The affine Grassmannian}
+
+Let $k = ℂ$ (though the construction also works for other fields).
+
+We set $\K = k\lParen t \rParen$ be the ring of Laurent series over $k$ and $\O = k\lBrack t \rBrack$ its subring of power series.
+We think of $\Spec \O$ as a formal disc and $\Spec \K$ as a punctured formal disc.
+Thus we call $LG = G(\K)$ the \emph{loop group} and $L_+G = G(\O)$ the \emph{arc group}.
+For example, if $G = \GL n$, then $G(\K)$ consists of invertible matrices with coefficients in $\K$.
+
+\begin{Def}
+    The \emph{affine Grassmannian} (or \emph{loop Grassmannian}) is
+    \[
+        \Gr = \Gr_G = \rquot{LG}{L_+G}.
+    \]
+\end{Def}
+
+The affine Grassmannian is an increasing union of projective varieties.
+
+\begin{Ex}
+    Let $G = \GL n$.
+    Then we have an action of $L\GL n$ on $\K^n$.
+    The basic lattice $\O^n \subseteq \K^n$ (see Figure~\ref{fig:GLnlattice}) is preserved by $L_+\GL n$.
+    \begin{figure}[htb]
+        \centering
+        \begin{tikzpicture}[y={-0.5cm}, x={0.5cm}]
+            \foreach \i in {-1,0,1,2} {
+                \foreach \j in {-1,0,1} {
+                    \fill ({\j},{\i}) circle[radius=2pt];
+                }
+                \node[anchor=mid west] at (2,\i) {$t^{\i}$};
+            }
+            \draw[rounded corners=2pt] (-1.5,3) -- (-1.5,-0.5) -- (1.5,-0.5) -- (1.5,3);
+            \draw[loosely dotted, very thick] (0,-1.5) -- (0,-2.5);
+            \draw[loosely dotted, very thick] (0,2.5) -- (0,3.5);
+        \end{tikzpicture}
+        \caption{The lattice of basis vectors of $\K^3$ after fixing a basis for $ℂ³$ with the basic lattice $\O^n$ marked.}
+        \label{fig:GLnlattice}
+    \end{figure}
+    \begin{Exercise}
+        Show that 
+        \[
+            \Gr_{\GL n} = 
+            \left\{ 
+                \text{$k$-subspaces $W \subseteq \K^n$ such that $tW \subseteq W$ and $t^N\O^n \subseteq W \subseteq t^{-N}\O^n$ for $N \gg 0$}
+            \right\}.
+        \]
+    \end{Exercise}
+    Hence we can write $\Gr_{\GL n} = \smash{\bigcup\limits_{\mathclap{N = 0}}^∞ \Gr_N}$, where
+    \[
+        \Gr_N = 
+        \left\{ 
+            \text{$k$-subspaces $W \subseteq \K^n$ such that $tW \subseteq W$ and $t^N\O^n \subseteq W \subseteq t^{-N}\O^n$}
+        \right\}.
+    \]
+    is a projective variety.
+    \begin{figure}[htb]
+        \centering
+        \begin{tikzpicture}[y={-0.5cm}, x={0.5cm}]
+            \foreach \i in {-2,-1,0,1,2} {
+                \foreach \j in {-1,0,1} {
+                    \fill ({\j},{\i}) circle[radius=2pt];
+                }
+                \node[anchor=mid west] at (2,\i) {$t^{\i}$};
+            }
+            \draw[rounded corners=2pt] (-1.6,2.5) -- (-1.6,-2.3) -- (1.6,-2.3) -- (1.6,2.5);
+            \draw[rounded corners=2pt] (-1.4,2.5) -- (-1.4,1.5) -- (1.4,1.5) -- (1.4,2.5);
+            \draw[loosely dotted, very thick] (0,-2.5) -- (0,-3.5);
+            \draw[loosely dotted, very thick] (0,2.5) -- (0,3.5);
+        \end{tikzpicture}
+        \caption{The bounds for $W$ in $\Gr_2$.}
+        \label{fig:GLnlatticeN}
+    \end{figure}
+\end{Ex}
+
+\subsection{Alternative descriptions}
+
+\subsubsection{Bundles}
+
+Let $D = \Spec \O$ and $D^× = \Spec \K$.
+Then $\Gr$ is the set of $G$-bundles on $D$, trivialized on $D^×$.
+Hence, if $\mathbb D = D \amalg_{D^×} D$ is the disc with two origins, we have
+\[
+    \lquot{L_+G}{\Gr} =
+    \dquot{L_+G}{LG}{L_+G} = 
+    \{ \text{$G$-bundles on $\mathbb D$}\}.
+\]
+
+\subsubsection{Topological}
+
+Let $K \subseteq G$ be a maximal compact and let $ΩK$ be the based polynomial\footnote{I.e., as maps $S¹ → K$ the loops have finite Fourier expansion} loop group on $K$.
+Then
+\[ \Gr \cong ΩK\]
+as topological spaces.
+In fact, $LG \cong ΩK × L_+G$.
+
+\begin{Exercise}
+    Show that for $G = \PGL 2$ one has
+    \[
+        \Gr_{\PGL 2} = \rquot{\operatorname{Free}(S²)}{xa(x) = 1},
+    \]
+    where $\operatorname{Free}(X)$ denotes the free topological group on $X$ and $a\colon S² → S²$ is the antipodal map.
+\end{Exercise}
 
 \section{Geometric traces}
 
