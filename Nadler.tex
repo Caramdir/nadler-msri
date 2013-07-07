@@ -12,6 +12,9 @@
 
 \begin{document}
 
+\newcommand\Sing{\operatorname{Sing}}
+\newcommand\Loc{\operatorname{Loc}}
+
 \maketitle
 
 \tableofcontents
@@ -24,7 +27,7 @@ While algebraic geometers ostensibly study solutions to polynomial equations, it
 Hence we can say that Algebraic Geometry is the study of \emph{systems} of polynomial equations.
 An example of our slogan \enquote{equations over solutions} is the importance of nilpotents.
 
-General references for this section are the works of Toën-Vezzosi and Lurie.
+General references for this section are the works of Toën--Vezzosi and Lurie.
 
 \subsection{Three examples of \enquote{derived equations}}
 
@@ -223,8 +226,7 @@ Attached to $A$ are various categories of modules, which are summarized in Figur
 \end{itemize}
 
 \paragraph{Cotangent complex}
-http://tex.stackexchange.com/questions/7556/shifting-0-0-to-new-coordinate-tikz
-To $A$ we attach its \emph{cotangent complex} $\mathbb L_A ∈ A\text{-}\cat{Mod}$, which is a connective modules such that $π₀\mathbb L_A$ coincides with the cotangent bundle $Ω_{π₀A}$.
+To $A$ we attach its \emph{cotangent complex} $\mathbb L_A ∈ A\text{-}\cat{Mod}$, which is a connective module such that $π₀\mathbb L_A$ coincides with the cotangent bundle $Ω_{π₀A}$.
 The universal characterization of the cotangent complex is 
 \[
     \operatorname{Der}(A,M) = \Hom(\mathbb L_A, M).    
@@ -272,6 +274,199 @@ where $X₀$ and $X₁$ are derived schemes and the two arrows $\leftleftarrows$
 \end{Ex}
 
 \section{Microlocal algebraic geometry}
+
+The goal of this section is to introduce geometric Arthur parameters. 
+There is work by many people on the ideas we will introduce, but the \enquote{state of the art} is \cite{ArinkinGaitsgory:arXiv:SingularSupport}.
+
+We will work locally and set $X = \{F = 0\}$, where $F\colon \as n → \as k$.
+We want to understand the (derived) category $\catCoh X$.
+
+\subsection{Philosophy: two themes}
+
+The ideas we will introduced a based on two major themes in mathematics. 
+The first of these is illustrated by the following example.
+
+\begin{Ex}
+    Let $A$ be an algebra and consider the category $\catModules A$ of $A$-modules.
+    Let $Z(A)$ be the center of $A$.
+    Then $\Spec Z(A)$ is a scheme, and we can localize $A$ as a sheaf of algebras on $\Spec Z(A)$.
+    Therefore we can localize the category $\catModules A$ on $\Spec Z(A)$.
+\end{Ex}
+
+More generally, if $\cat C$ is a category, we can sheafify $\cat C$ over $Z(\cat C) = \End(\id[\cat{C}])$.
+
+The second theme is that there are two types of \enquote{geometric measurements}: 
+\begin{itemize}
+    \item static measurements corresponding to points of $X$, e.g.~talking stalks;
+    \item dynamic measurements corresponding to $T^*X$, e.g.~taking vanishing cycles.
+\end{itemize}
+
+A classical example is Fourier transform $L²(S¹) \isoto L²(ℤ)$.
+
+\subsection{Koszul duality}
+
+Let $V = \Spec k[x₁,\dotsc,x_n]$ with $\deg x_i = -1$ be a \enquote{vector space in degree $-1$.}
+We want to analyze $\catCoh V$.
+
+Note that $V_{\mathrm{cl}} = \Spec π₀V$ is just a point, so that this doesn't give us any way to localize.
+Thus we introduce \emph{codirections} $V^*[1] = \Spec k[ξ₁,\dotsc,ξ_n]$ with $\deg ξ_i = 2$.
+
+\begin{Thm}[Koszul Duality]
+    There is an equivalence of categories
+    \[
+        \catCoh V \cong \catCoh{V^*[1]},
+    \]
+    sending the structure sheaf $\O_V$ to the skyscraper $k$ on $V^*[1]$ and the skyscraper $k$ on $V$ to $\O_{V^*[1]}$.
+\end{Thm}
+
+Thus we can localize coherent sheaves on $V$ on $V^*[1]$ (which is given by a \enquote{usual} polynomial ring).
+Supports will be closed conic subvarieties.
+
+\begin{Exercise}
+    Under Koszul Duality, $\sheaf F ∈ \catCoh V$ is perfect if and only if $\supp F \subseteq \{0\} \subseteq V^*[1]$.
+\end{Exercise}
+
+\begin{Rem}
+    We think of $\catCoh V$ as \enquote{distributions} and $\catPerf V \subseteq \catCoh V$ as \enquote{functions}.
+    Koszul Duality measures the codirections on which \enquote{smoothness} fails.
+\end{Rem}
+
+\begin{Exercise}
+    Show that $V = \{0\} ×_{\as n} \{0\}$ as derived schemes.
+    Thus $V$ is an Abelian groupoid via \enquote{concatenation of paths}.
+    This turns $\catCoh V$ into a tensor category with tensor product $*$ given by convolution.
+    Show that Koszul Duality is an equivalence of tensor categories exchanging $*$ with the usual tensor product $\otimes$ in $\catCoh{V^*[1]}$.
+\end{Exercise}
+
+\subsection{The scheme of singularities}
+
+Let us return to the situation of $X = \{F = 0\} \subseteq \as n$.
+The cotangent complex of $X$ is given by
+\[
+    \mathbb L_X = \left( Ω_{\as k} \xrightarrow{dF^*} Ω_{\as n} \right)
+\]
+in degrees $-1$ and $0$.
+
+\begin{Def}
+    The (classical) scheme $\Sing(X) → X$ is the scheme with fiber at $x ∈ X$ given by $H^{-1}\mathbb L_X$.
+\end{Def}
+
+\begin{Ex}
+    Consider $X = \{x³ = y²\}$.
+    Then $\Sing(X)$ is the whole picture given in Figure~\ref{fig:SingEx}.
+    \begin{figure}[htb]
+        \centering
+        \begin{tikzpicture}
+            \draw plot[smooth] file {cusp.table};
+            \draw[y=-1cm] plot[smooth] file {cusp.table};
+            \draw (-1,0) -- (1.5,0);
+        \end{tikzpicture}
+        \caption{Scheme of singularities of $x³ = y²$}
+        \label{fig:SingEx}
+    \end{figure}
+\end{Ex}
+
+\begin{Rem}
+    We always have $\Sing X \subseteq X × \as k$.
+\end{Rem}
+
+We can then localize $\catCoh X$ over $\Sing(X)$.
+
+\begin{Rem}
+    This will be the ultimate localization.
+\end{Rem}
+
+To do so, we need do find the action of $\O(\as k) = k[ξ₁,\dotsc,ξ_k]$.
+Consider the Cartesian diagrams (in derived schemes)
+\[
+    \begin{tikzpicture}
+        \matrix[commutative diagram] (m) {
+            X & \as n \\
+            \{0\} & \as k \\
+        };
+        \path[commutative diagram arrows]
+            (m-1-1) edge (m-1-2) edge (m-2-1)
+            (m-1-2) edge node[right] {$F$} (m-2-2)
+            (m-2-1) edge (m-2-2);
+
+        \begin{scope}[xshift={4cm}]
+            \matrix[commutative diagram] (m) {
+                V & \{0\} \\
+                \{0\} & \as k \\
+            };
+            \path[commutative diagram arrows]
+                (m-1-1) edge (m-1-2) edge (m-2-1)
+                (m-1-2) edge (m-2-2)
+                (m-2-1) edge (m-2-2);
+        \end{scope}
+    \end{tikzpicture}
+\]
+We should think of points of $X$ as paths from $F$ to $\{0\}$ and points in $V$ as loops based at $\{0\}$.
+Thus we can concatenate such a path with a loop and get another path.
+
+The upshot of this is that we have an action of $\catCoh V$ on $\catCoh X$.
+The unit of the convolution product $*$ of $\catCoh V$ is $k$.
+Hence we obtain a map
+\[
+    k[ξ₁,\dotsc,ξ_k] = \End(k) → \End(\id[\catCoh X]).
+\]
+In other words, $k[ξ₁,\dotsc,ξ_k]$ acts universally on every object of $\catCoh X$.
+Hence $\catCoh X$ can be localized on $X × \as n$.
+
+\begin{Exercise}
+    The support of any element of $\catCoh X$ will always be contained in $\Sing(X)$.
+\end{Exercise}
+
+\begin{Ex}
+    Let $Q³ = \{A ∈ M₂ : \det A = 0\}$.
+    This can be presented as
+    \[
+    \begin{tikzpicture}
+        \matrix[commutative diagram] (m) {
+            Q³ & \as 4 \\
+            \{0\} & \as 1 \\
+        };
+        \path[commutative diagram arrows]
+            (m-1-1) edge (m-1-2) edge (m-2-1)
+            (m-1-2) edge node[right] {$\det$} (m-2-2)
+            (m-2-1) edge (m-2-2);
+    \end{tikzpicture}
+    \]
+    and $\Sing(X) \subseteq X × \as 1$ is $X$ together with a one-dimensional \enquote{spoke} at the origin.
+\end{Ex}
+
+\begin{Exercise}
+    Let $\sheaf F ∈ \catCoh X$.
+    Show that $\supp \sheaf F \subseteq \{0\} \subseteq \Sing(X)$ if and only if $\sheaf F ∈ \catPerf X$.
+\end{Exercise}
+
+\subsection{Geometric Arthur parameters}
+
+Let $C$ be a smooth projective curve over $k$.
+We are interested in $\Loc_G(C)$, the moduli of local $G$-systems on $C$.
+There are two versions of what this could mean, but for now we will only consider the \enquote{Betti version}
+\[
+    \Loc_G(C) = \rquot{\left\{ π₁C → G  \right\}}{C}.
+\]
+The stack $\Loc_G(C)$ has a presentation
+\[
+    \Loc_G(C) \leftarrow \left( \Loc_G(C)' \leftleftarrows G \right),
+\]
+where $\Loc_G(C)'$ is given by \todo{What is the meaning of $\Loc_G(C)'$?}
+\[
+    \begin{tikzpicture}
+        \matrix[commutative diagram] (m) {
+            \Loc_G(C)' & G^{2g} \\
+            \{1\} & G \\
+        };
+        \path[commutative diagram arrows]
+            (m-1-1) edge (m-1-2) edge (m-2-1)
+            (m-1-2) edge node[right] {$[\,{,}\,]$} (m-2-2)
+            (m-2-1) edge (m-2-2);
+    \end{tikzpicture}
+\]
+We call $\Sing(\Loc_G(C)) \subseteq \rquot{(\Loc_G(C)' × \liealg g^*)}{G}$ the \emph{moduli of geometric Arthur's parameters}.
+One expects that automorphic objects lead to coherent sheaves with nilpotent Arthur's parameters.
 
 \section{Hecke categories}
 
