@@ -17,6 +17,8 @@
 \newcommand\K{\sheaf K}%
 \newcommand\ld[1]{\check{#1}}
 \renewcommand\Gr{\operatorname{Gr}}
+\newcommand\IC{\operatorname{IC}}
+\newcommand\Bun{\operatorname{Bun}}
 
 \maketitle
 
@@ -593,6 +595,105 @@ In fact, $LG \cong ΩK × L_+G$.
     where $\operatorname{Free}(X)$ denotes the free topological group on $X$ and $a\colon S² → S²$ is the antipodal map.
 \end{Exercise}
 
+\subsection{A little structure theory}
+
+\subsubsection{Cartan}
+
+There is an isomorphism of sets
+\[
+    \lquot{L_+G}{\Gr} =
+    \dquot{L_+G}{LG}{L_+G} \cong
+    \rquot{Λ_G}{W} \cong
+    Λ_G^+,
+\]
+where $W$ is the Weyl group and $Λ^+_G$ the dominant coweights.
+
+\subsubsection{Iwasawa}
+
+\[
+    \lquot{N(\K)}{\Gr} = \dquot{N(\K)}{LG}{L_+G} \cong Λ_G.
+\]
+
+\todo{Example of $\PGL 2$.}
+
+\subsection{Geometric Satake}
+
+\subsubsection{Geometric \texorpdfstring{$L_+G$}{L+G}-invariant \enquote{distributions} on \texorpdfstring{$\Gr$}{Gr}}
+
+These lead to the category $\cat P_{L_+G}(\Gr)$ of $L_+G$-equivariant perverse sheaves on $\Gr$.
+This category is Abelian and semisimple.
+The simple objects are given by the intersection complexes $\IC^λ = \IC(\Gr^λ)$, where $\Gr^λ \subseteq \Gr$ is the closure of the $L_+G$-orbit indexed by $λ ∈ \rquot{Λ_G}W$.
+This is the \enquote{best basis of the Hecke algebra.}
+
+The first hint of Satake are the following equations due to Lustzig.
+Let $V^λ$ be the irreducible representation of $\ld G$ of highest weight $λ ∈ \rquot{\ld Λ_{\ld G}}W = \rquot{Λ_G}W$.
+Then,
+\[ 
+    \dim \mathrm RΓ(\Gr,\, \IC^λ) = \dim V^λ
+\]
+and
+\[
+    \dim \res{\IC^λ}μ = \dim \operatorname{wt}_μ(V^λ)
+\]
+for any point $λ$ in $\Gr^μ$.
+
+\subsubsection{Geometric Satake}
+
+\begin{Thm}
+    There is an isomorphism of tensor categories
+    \[
+        \cat P_{L_+G}(\Gr) \cong \cat{Rep}(\ld G).
+    \]
+\end{Thm}
+
+\subsubsection{Where is the tensor structure?}
+
+The category $\cat P_{L_+G}(\Gr)$ has a tensor structure $*$ given by the usual convolution pattern via $\lquot{L_+G}{\Gr} = \{\text{$G$-bundles on $\mathbb D$}\}$.
+However there is an alternative, \enquote{better} point of view given by the \emph{fusion} product.
+
+Recall that $\Gr$ parametrizes $G$-bundles on $D$ with a trivialization on $D^×$.
+Let $C$ be and smooth curve and $c ∈ C$ a closed point.
+By extending the bundles one sees that $\Gr$ is also given by $G$-bundles on $C$ with a trivialization of $C \setminus c$.
+Note that from this perspective all points of $C$ look similar.
+
+We no introduce the \emph{Beilinson--Drinfeld} (or \emph{BD}) Grassmannian.
+Let $S = \{c_i : 1 \le i \le k\}$ be a collection of closed points in $C$.
+Then set
+\[
+    \Gr^{(k)} = \left\{ \text{$G$-bundles on $C$, trivialized away from $S$} \right\}.
+\]
+\begin{Exercise}
+    \[
+        \Gr^{(k)} = \smash[t]{\prod\limits_{\mathclap{i=1}}^k \Gr}.
+    \]
+\end{Exercise}
+Now we allow $S$ to move and points to collide. 
+This yields an evidently commutative tensor product of $\cat P_{L_+G}(\Gr)$ via taking nearby cycles as points collide.
+
+\subsubsection{Derived version}
+
+Instead of just the Abelian category of perverse sheaves, consider the full $L_+G$-equivariant, constructible derived category $D_{\mathrm{c},\, L_+G}(\Gr)$.
+We would like a spectral interpretation of this category.
+
+In view of the $\lquot{L_+G}{\Gr} = \{ \text{$G$-bundles on $\mathbb D$}\}$, we expect 
+\[
+    \Loc_{\ld G}(\mathbb D) =
+    \rquot{\left( \{1\} \mathbin{×\limits_{\ld G}} \{1\} \right)}{\ld G} =
+    \rquot{\ld{\liealg g}[1]}{\ld G}
+\]
+to appear on the spectral side, where $\ld{\liealg g}[1] = \Spec\operatorname{Sym}\left( (\ld{\liealg g})^*[1] \right)$.
+
+Consider $\catCoh{\Loc_{\ld G}(\mathbb D)}$.
+Note that $H^{-1}\mathbb L_{\Loc_{\ld G}(\mathbb D)} \cong (\ld{\liealg g})^*$.
+Let $N \subseteq (\ld{\liealg g})^*$ be the nilpotent cone.
+\begin{Thm}
+    \[
+        D_{\mathrm c}(\Bun_G(\mathbb D)) \cong
+        D_{\mathrm c,\, L_+G}(\Gr) \cong
+        \cat{Coh}_N(\Loc_{\ld G}(\mathbb D)).
+        \qedhere
+    \]
+\end{Thm}
 \section{Geometric traces}
 
 \printbibliography
