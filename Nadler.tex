@@ -447,17 +447,33 @@ Hence $\catCoh X$ can be localized on $X × \as n$.
 
 \subsection{Geometric Arthur parameters}
 
-Let $C$ be a smooth projective curve over $k$.
-We are interested in $\Loc_G(C)$, the moduli of local $G$-systems on $C$.
-There are two versions of what this could mean, but for now we will only consider the \enquote{Betti version}
+In the function field setup, the analogue of the number field in the Langlands program is a smooth projective curve $C$ over the ground field $k$.
+The analogue of a Galois representation is then a local system for $G$ (or rather $\ld G$, but we will only talk about one side of the correspondence for now, so we omit the dual for simplicity).
+We write $\Loc_G(C)$ for the moduli of local $G$-systems on $C$.
+
+A common source of confusion here is that there are two notions of local systems in the geometric setting:
+\begin{itemize}
+    \item The \enquote{Betti version}: A local system is a representation of the fundamental group of $C$, i.e. a map $π₁(C) → G$.
+        This looks most immediately like a Galois representation: the fundamental group is the geometric analogue of the Galois group in the number field setting.
+    \item The \enquote{de Rham version}: A local system is a $G$-bundle with a flat connection.
+\end{itemize}
+These two notions are analytically equivalent, but not algebraically equivalent.
+So their local geometry is the same, but there are global aspects where they differ.
+
+For simplicity, we will only consider the Betti version in this lecture.
+Thus we set
 \[
-    \Loc_G(C) = \rquot{\left\{ π₁C → G  \right\}}{C}.
+    \Loc_G(C) = \rquot{\left\{ π₁C → G  \right\}}{G}.
 \]
-The stack $\Loc_G(C)$ has a presentation
+This is a nice Artin stack.
+Let us describe it in more detail.
+First, if we pick a point in $C$ and trivialize a $G$-bundle we get rid of the symmetries.
+Hence we get a presentation of $\Loc_G(C)$ as the groupoid\todo{So $\Loc_G(C)'$ is the moduli of local systems trivialized at a point of $C$?}
 \[
-    \Loc_G(C) \leftarrow \left( \Loc_G(C)' \leftleftarrows G \right),
+    \Loc_G(C) \leftarrow \left( \Loc_G(C)' \leftleftarrows G \right).
 \]
-where $\Loc_G(C)'$ is given by \todo{What is the meaning of $\Loc_G(C)'$?}
+Let $g$ be the genus of $C$ (so $2g$ is the number of generators of $π₁(C)$).
+We can further write $\Loc_G(C)'$ as the fiber product
 \[
     \begin{tikzpicture}
         \matrix[commutative diagram] (m) {
@@ -470,7 +486,19 @@ where $\Loc_G(C)'$ is given by \todo{What is the meaning of $\Loc_G(C)'$?}
             (m-2-1) edge (m-2-2);
     \end{tikzpicture}
 \]
-We call $\Sing(\Loc_G(C)) \subseteq \rquot{(\Loc_G(C)' × \liealg g^*)}{G}$ the \emph{moduli of geometric Arthur's parameters}.
+where $[\,{,}\,]$ is the commutator map. 
+In other words, we take the curve, puncture it, take a local system on the punctured curve which will have $2g$ monodromies and ask that it extends over the puncture, i.e. the commutator is $1$.
+
+Now we have a diagram as before (with $F = [\,{,}\,]$).
+The spaces $G$ and $G^{2g}$ are not affine, but they still nice smooth varieties.
+Hence, if we ignore the symmetries, $\Loc_G(C)$ looks like the kind of complete intersections we studied in the first part of this section.
+
+We can now define the geometric analogue of Arthur's parameters: they are $\Sing(X)$ for this stack, i.e. we call
+\[
+    \Sing(\Loc_G(C)) \subseteq \rquot{(\Loc_G(C)' × \liealg g^*)}{G}
+\]
+the \emph{moduli of geometric Arthur's parameters}.
+Note that $\liealg g^*$ appears for the cotangent space (as $G$ is not affine).
 One expects that automorphic objects lead to coherent sheaves with nilpotent Arthur's parameters.
 
 \section{Hecke categories}
