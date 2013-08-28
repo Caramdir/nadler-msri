@@ -451,7 +451,7 @@ In the function field setup, the analogue of the number field in the Langlands p
 The analogue of a Galois representation is then a local system for $G$ (or rather $\ld G$, but we will only talk about one side of the correspondence for now, so we omit the dual for simplicity).
 We write $\Loc_G(C)$ for the moduli of local $G$-systems on $C$.
 
-A common source of confusion here is that there are two notions of local systems in the geometric setting:
+A common source of confusion here is that there are two notions of local systems in the geometric context:
 \begin{itemize}
     \item The \enquote{Betti version}: A local system is a representation of the fundamental group of $C$, i.e. a map $π₁(C) → G$.
         This looks most immediately like a Galois representation: the fundamental group is the geometric analogue of the Galois group in the number field setting.
@@ -486,12 +486,12 @@ We can further write $\Loc_G(C)'$ as the fiber product
             (m-2-1) edge (m-2-2);
     \end{tikzpicture}
 \]
-where $[\,{,}\,]$ is the commutator map. 
+where $[\,{,}\,]$ is the commutator map\todo{How to define the commutator map $G^{2g} → G$?}. 
 In other words, we take the curve, puncture it, take a local system on the punctured curve which will have $2g$ monodromies and ask that it extends over the puncture, i.e. the commutator is $1$.
 
 Now we have a diagram as before (with $F = [\,{,}\,]$).
-The spaces $G$ and $G^{2g}$ are not affine, but they still nice smooth varieties.
-Hence, if we ignore the symmetries, $\Loc_G(C)$ looks like the kind of complete intersections we studied in the first part of this section.
+The spaces $G$ and $G^{2g}$ are not affine, but they are still nice smooth varieties.
+Hence, if we ignore the $G$-symmetries, $\Loc_G(C)$ looks like the kind of complete intersections we studied in the first part of this section.
 
 We can now define the geometric analogue of Arthur's parameters: they are $\Sing(X)$ for this stack, i.e. we call
 \[
@@ -500,25 +500,47 @@ We can now define the geometric analogue of Arthur's parameters: they are $\Sing
 the \emph{moduli of geometric Arthur's parameters}.
 Note that $\liealg g^*$ appears for the cotangent space (as $G$ is not affine).
 One expects that automorphic objects lead to coherent sheaves with nilpotent Arthur's parameters.
+\todo{Interpretation}
 
-\section{Hecke categories}
+\section{Geometry of Hecke categories -- Satake correspondence}
 
-Let $G$ be a reductive group and recall that the spherical Hecke algebra of $G$ is defined as
-\[
-    H_{\mathrm{sph}} = ℂ_c\left[ \dquot{G(ℤ_p)}{G(ℚ_p)}{G(ℤ_p)} \right].
-\]
+The goal of this section is discuss a geometric verison of the Satake correspondence.
+A lot of the material we will talk about has been very well understood for the last two decades, but by the end we will talk about something new that will tie in with the last two sections.
+The goal is to give an introduction to geometric techniques for understanding Hecke categories -- specifically spherical Hecke categories.
+
+\subsection{Reminder on the Satake correpondence}
+
+Let $G$ be a reductive group.
+As we will soon move to characteristic $0$, so for simplicity we assume that $G$ is defined over $ℤ$.
 Attached to $G$ is its root datum
 \[
     \left( Λ_G,\, \ld{Λ}_G,\, R_G, \ld R_G \right),
 \]
-consisting of the coweight lattice, the weight lattice, the coroots and the roots of $G$.
-Switching weights and coweights and roots and coroots, we obtain the Langlands dual group $\ld G$ of $G$.
-Recall that the Satake isomorphism is an isomorphism 
+consisting of the coweight lattice (homomorphisms from $\mathbb G_m$ into a maximal torus of $G$), the weight lattice (the dual), the coroots and the roots of $G$.
+Switching weights and coweights and roots and coroots, we obtain the \emph{Langlands dual group} $\ld G$ of $G$.
+\begin{Ex}
+    The Langlands dual of $\GL n$ is again $\GL n$.
+    The Langlands dual of $\SL n$ is $\PGL n$.
+\end{Ex}
+
+Recall that the \emph{spherical Hecke algebra} of $G$ consists of the compactly supported functions on $G(ℚ_p)$ which are $G(ℤ_p)$-biinvariant, i.e.
 \[
-    H_{\mathrm{sph}} \cong \O(\ld G)^{\ld G}
+    H_{\mathrm{sph}} = ℂ_c\biggl[ \dquot{G(ℤ_p)}{G(ℚ_p)}{G(ℤ_p)} \biggr].
 \]
-of commutative algebras between the Hecke category of $G$ (with $*$) and the representation ring of $\ld G$ (with $\cdot$).
-The goal of this lecture is to discuss a geometric version of the Satake isomorphism.
+The \emph{Satake correspondence} identifies this with functions on the Langlands dual group.
+More concretely it is an isomorphism 
+\begin{equation}
+    \label{eq:Hecke:Satake}%
+    H_{\mathrm{sph}} \cong \O(\ld G)^{\ld G}
+\end{equation}
+of commutative algebras between the spherical Hecke algebra of $G$ (with convolution $*$; we won't discuss the definition here, but see the geometric version below) and the representation ring of $\ld G$ (with multiplication $\cdot$).
+One can think of this as a kind of Fourier transform: it identifies something that is not evidently commutative with functions on something.
+
+The goal of this section is to discuss a geometric version of the Satake isomorphism: 
+We are going replace the algebras be symmetric monoidal categories of sheaves.
+Thus we get a statement with a lot more structure, that allows one to use the tools from algebraic geometry (e.g.~Hodge theory).
+So on the one hand the geometric version will be a more complicated statement than \eqref{eq:Hecke:Satake}, but on the other hand its additional structure gives a richer, more powerful statement.
+In particular, \eqref{eq:Hecke:Satake} can then be deduced from the categorical version.
 
 \subsection{The affine Grassmannian}
 
