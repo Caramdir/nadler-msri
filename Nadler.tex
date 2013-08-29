@@ -5,7 +5,7 @@
 \addbibresource{math.bib}
 %\bibliography{math.bib}
 
-\title{New geometric techniques in number theory:\\Spectral geometry of Hecke algebras and traces}
+\title{new geometric techniques in number theory:\\spectral geometry of hecke algebras and traces}
 \author{David Nadler\\Notes by Clemens Koppensteiner}
 \date{Berkely, July 1--8, 2013}
 \version{0}
@@ -26,7 +26,7 @@
 \bigskip\noindent
 By geometry we mean that we work in the function field case, with a base field $k$ of characteristic $0$.
 
-\section{Derived algebraic geometry}
+\section{derived algebraic geometry}
 
 While algebraic geometers ostensibly study solutions to polynomial equations, it has been long known that it is important to keep track of the actual equations instead of merely their solutions.
 Hence we can say that Algebraic Geometry is the study of \emph{systems} of polynomial equations.
@@ -34,7 +34,7 @@ An example of our slogan \enquote{equations over solutions} is the importance of
 
 General references for this section are the works of Toën--Vezzosi and Lurie.
 
-\subsection{Three examples of \enquote{derived equations}}
+\subsection[Three examples of \enquote{derived equations}]{three examples of \enquote{derived equations}}
 
 \subsubsection{Intersection multiplicities}
 
@@ -134,7 +134,7 @@ Classically there are strange ambiguities, in particular for deformations.
     But if we deform slightly and require that $[\,{,}\,] = λ \ne 0$, then the moduli space suddenly becomes empty!
 \end{Ex}
 
-\subsection{Local (affine) DAG}
+\subsection[Local (affine) \textsc{dag}]{local (affine) dag}
 
 Imposing equations translates to tensor products and in a derived setting this means that we have to keep track of $\Tor$s.
 
@@ -200,7 +200,7 @@ Practically, to calculate derived operations we only need to know the following:
 
 Let $A$ be a derived ring.
 
-\paragraph{Modules}
+\paragraph{modules}
 Attached to $A$ are various categories of modules, which are summarized in Figure~\ref{fig:modules}.
 \begin{figure}[htb]
     \centering
@@ -230,7 +230,7 @@ Attached to $A$ are various categories of modules, which are summarized in Figur
     \item $A\text{-}\cat{Coh}$ is the subcategory of $A\text{-}\cat{Mod}$ consisting of complexes with bounded coherent cohomology.
 \end{itemize}
 
-\paragraph{Cotangent complex}
+\paragraph{cotangent complex}
 To $A$ we attach its \emph{cotangent complex} $\mathbb L_A ∈ A\text{-}\cat{Mod}$, which is a connective module such that $π₀\mathbb L_A$ coincides with the cotangent bundle $Ω_{π₀A}$.
 The universal characterization of the cotangent complex is 
 \[
@@ -244,7 +244,7 @@ To calculate we only need to know that $\mathbb L_A$ coincides with the cotangen
 \]
 where the map is given by pullback.
 
-\subsection{Global DAG}
+\subsection[Global \textsc{dag}]{global dag}
 
 We take the functor of points viewpoint:
 \[
@@ -278,7 +278,7 @@ where $X₀$ and $X₁$ are derived schemes and the two arrows $\leftleftarrows$
     \end{enumerate}
 \end{Ex}
 
-\section{Microlocal algebraic geometry}
+\section{microlocal algebraic geometry}
 
 The goal of this section is to introduce geometric Arthur parameters. 
 There is work by many people on the ideas we will introduce, but the \enquote{state of the art} is \cite{ArinkinGaitsgory:arXiv:SingularSupport}.
@@ -286,7 +286,7 @@ There is work by many people on the ideas we will introduce, but the \enquote{st
 We will work locally and set $X = \{F = 0\}$, where $F\colon \as n → \as k$.
 We want to understand the (derived) category $\catCoh X$.
 
-\subsection{Philosophy: two themes}
+\subsection[Philosophy: two themes]{philosophy: two themes}
 
 The ideas we will introduced a based on two major themes in mathematics. 
 The first of these is illustrated by the following example.
@@ -308,7 +308,7 @@ The second theme is that there are two types of \enquote{geometric measurements}
 
 A classical example is Fourier transform $L²(S¹) \isoto L²(ℤ)$.
 
-\subsection{Koszul duality}
+\subsection[Koszul duality]{koszul duality}
 
 Let $V = \Spec k[x₁,\dotsc,x_n]$ with $\deg x_i = -1$ be a \enquote{vector space in degree $-1$.}
 We want to analyze $\catCoh V$.
@@ -343,7 +343,7 @@ Supports will be closed conic subvarieties.
     Show that Koszul Duality is an equivalence of tensor categories exchanging $*$ with the usual tensor product $\otimes$ in $\catCoh{V^*[1]}$.
 \end{Exercise}
 
-\subsection{The scheme of singularities}
+\subsection[The scheme of singularities]{the scheme of singularities}
 
 Let us return to the situation of $X = \{F = 0\} \subseteq \as n$.
 The cotangent complex of $X$ is given by
@@ -445,7 +445,7 @@ Hence $\catCoh X$ can be localized on $X × \as n$.
     Show that $\supp \sheaf F \subseteq \{0\} \subseteq \Sing(X)$ if and only if $\sheaf F ∈ \catPerf X$.
 \end{Exercise}
 
-\subsection{Geometric Arthur parameters}
+\subsection[Geometric Arthur parameters]{geometric arthur parameters}
 
 In the function field setup, the analogue of the number field in the Langlands program is a smooth projective curve $C$ over the ground field $k$.
 The analogue of a Galois representation is then a local system for $G$ (or rather $\ld G$, but we will only talk about one side of the correspondence for now, so we omit the dual for simplicity).
@@ -502,13 +502,13 @@ Note that $\liealg g^*$ appears for the cotangent space (as $G$ is not affine).
 One expects that automorphic objects lead to coherent sheaves with nilpotent Arthur's parameters.
 \todo{Interpretation}
 
-\section{Geometry of Hecke categories -- Satake correspondence}
+\section{geometry of hecke categories -- satake correspondence}
 
 The goal of this section is discuss a geometric verison of the Satake correspondence.
 A lot of the material we will talk about has been very well understood for the last two decades, but by the end we will talk about something new that will tie in with the last two sections.
 The goal is to give an introduction to geometric techniques for understanding Hecke categories -- specifically spherical Hecke categories.
 
-\subsection{Reminder on the Satake correpondence}
+\subsection[Reminder on the Satake correspondence]{reminder on the satake correspondence}
 
 Let $G$ be a reductive group.
 As we will soon move to characteristic $0$, so for simplicity we assume that $G$ is defined over $ℤ$.
@@ -542,7 +542,7 @@ Thus we get a statement with a lot more structure, that allows one to use the to
 So on the one hand the geometric version will be a more complicated statement than \eqref{eq:Hecke:Satake}, but on the other hand its additional structure gives a richer, more powerful statement.
 In particular, \eqref{eq:Hecke:Satake} can then be deduced from the categorical version.
 
-\subsection{The affine Grassmannian}
+\subsection[The affine Grassmannian]{the affine grassmannian}
 
 Note that in the definition of the spherical Hecke algebra we could have used any local with finite residue field instead of $ℚ_p$.
 For example, we could have defined it over $\mathbb F_p\lParen t \rParen$, already putting us into the function field case in the Satake correspondence.
@@ -629,7 +629,7 @@ The key structure that the affine Grassmannian has -- that one doesn't have for 
 
 We are going to study the topology of this increasing union of finite dimensional projective varieties.
 
-\subsection{Alternative descriptions}
+\subsection[Alternative descriptions]{alternative descriptions}
 
 \subsubsection{Bundles}
 
@@ -658,7 +658,7 @@ In fact, $LG \cong ΩK × L_+G$.
     where $\operatorname{Free}(X)$ denotes the free topological group on $X$ and $a\colon S² → S²$ is the antipodal map.
 \end{Exercise}
 
-\subsection{A little structure theory}
+\subsection[A little structure theory]{a little structure theory}
 
 \subsubsection{Cartan}
 
@@ -679,7 +679,7 @@ where $W$ is the Weyl group and $Λ^+_G$ the dominant coweights.
 
 \todo{Example of $\PGL 2$.}
 
-\subsection{Geometric Satake}
+\subsection[Geometric Satake]{geometric satake}
 
 \subsubsection{Geometric \texorpdfstring{$L_+G$}{L+G}-invariant \enquote{distributions} on \texorpdfstring{$\Gr$}{Gr}}
 
@@ -757,7 +757,7 @@ Let $N \subseteq (\ld{\liealg g})^*$ be the nilpotent cone.
         \qedhere
     \]
 \end{Thm}
-\section{Geometric traces}
+\section{geometric traces}
 
 \printbibliography
 \end{document}
