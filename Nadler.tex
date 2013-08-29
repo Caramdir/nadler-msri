@@ -544,21 +544,32 @@ In particular, \eqref{eq:Hecke:Satake} can then be deduced from the categorical 
 
 \subsection{The affine Grassmannian}
 
-Let $k = ℂ$ (though the construction also works for other fields).
+Note that in the definition of the spherical Hecke algebra we could have used any local with finite residue field instead of $ℚ_p$.
+For example, we could have defined it over $\mathbb F_p\lParen t \rParen$, already putting us into the function field case in the Satake correspondence.
+In the geometric case, we replace $\mathbb F_p$ by an algebraically closed field.
+Specifically we will use the complex numbers and from now on let $k = ℂ$ (although one could also take $k = \overline{\mathbb F_p}$ and reproduce everything that follows).
 
-We set $\K = k\lParen t \rParen$ be the ring of Laurent series over $k$ and $\O = k\lBrack t \rBrack$ its subring of power series.
-We think of $\Spec \O$ as a formal disc and $\Spec \K$ as a punctured formal disc.
-Thus we call $LG = G(\K)$ the \emph{loop group} and $L_+G = G(\O)$ the \emph{arc group}.
+To simplify notation, we let $\K = k\lParen t \rParen$ be the ring of Laurent series over $k$ and $\O = k\lBrack t \rBrack$ its subring of power series.
+As replacement of $G(ℚ_p)$ in the $p$-adic case we take the \emph{loop group} $LG = G(\K)$
+This will have a structure of a $k$-variety, but for the moment we just think of $LG$ as a set.
 For example, if $G = \GL n$, then $G(\K)$ consists of invertible matrices with coefficients in $\K$.
+Further we define the \emph{arc group} $L_+G = G(\O)$.
+
+The names of these objects come from the following interpretation.
+On can think of $ℚ_p$ as a little punctured disc around $p$ in $\Spec ℤ$ and the same is true for Laurent series: you get them when you look at a little punctured disc around a point on a curve.
+So we think of $\Spec \O$ as a formal disc and $\Spec \K$ as a punctured formal disc.
+Thus elements of $LG$ are maps from a punctured disc into $G$, i.e. \enquote{loops}.
 
 \begin{Def}
     The \emph{affine Grassmannian} (or \emph{loop Grassmannian}) is
     \[
         \Gr = \Gr_G = \rquot{LG}{L_+G}.
     \]
+    as a set.
 \end{Def}
+The name comes from the fact that $LG$ is an affine Kac-Moody group with maximal parabolic $L_+G$ and hence one can think of $\rquot{LG}{L_+G}$ as a kind of flag variety.
 
-The affine Grassmannian is an increasing union of projective varieties.
+The key structure that the affine Grassmannian has -- that one doesn't have for $\rquot{G(ℚ_p)}{G(ℤ_p)}$ -- is that it is naturally an increasing union of projective varieties.
 
 \begin{Ex}
     Let $G = \GL n$.
@@ -577,7 +588,7 @@ The affine Grassmannian is an increasing union of projective varieties.
             \draw[loosely dotted, very thick] (0,-1.5) -- (0,-2.5);
             \draw[loosely dotted, very thick] (0,2.5) -- (0,3.5);
         \end{tikzpicture}
-        \caption{The lattice of basis vectors of $\K^3$ after fixing a basis for $ℂ³$ with the basic lattice $\O^n$ marked.}
+        \caption{The lattice of basis vectors of $\K^3$ after fixing a basis for $ℂ³$ with the basic lattice $\O^3$ marked.}
         \label{fig:GLnlattice}
     \end{figure}
     \begin{Exercise}
@@ -596,7 +607,7 @@ The affine Grassmannian is an increasing union of projective varieties.
             \text{$k$-subspaces $W \subseteq \K^n$ such that $tW \subseteq W$ and $t^N\O^n \subseteq W \subseteq t^{-N}\O^n$}
         \right\}.
     \]
-    is a projective variety.
+    (see Figure~\ref{fig:GLnlatticeN} for $N=2$) is a projective variety.
     \begin{figure}[htb]
         \centering
         \begin{tikzpicture}[y={-0.5cm}, x={0.5cm}]
@@ -615,6 +626,8 @@ The affine Grassmannian is an increasing union of projective varieties.
         \label{fig:GLnlatticeN}
     \end{figure}
 \end{Ex}
+
+We are going to study the topology of this increasing union of finite dimensional projective varieties.
 
 \subsection{Alternative descriptions}
 
