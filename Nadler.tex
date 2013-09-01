@@ -538,15 +538,22 @@ The affine Grassmannian is an increasing union of projective varieties.
                 \text{$k$-subspaces $W \subseteq \K^n$ such that $tW \subseteq W$ and $t^N\O^n \subseteq W \subseteq t^{-N}\O^n$ for $N \gg 0$}
             \right\}.
         \]
+        (Hint: check that the loop group acts transitively on the lattices and the arc group preserves the basic lattice.)
     \end{Exercise}
-    Hence we can write $\Gr_{\GL n} = \smash{\bigcup\limits_{\mathclap{N = 0}}^∞ \Gr_N}$, where
+    As a consequence of the exercise, we can write 
+    \[
+        \Gr_{\GL n} = \smash{\bigcup\limits_{\mathclap{N = 0}}^∞ \Gr_N},
+    \] 
+    with
     \[
         \Gr_N = 
         \left\{ 
             \text{$k$-subspaces $W \subseteq \K^n$ such that $tW \subseteq W$ and $t^N\O^n \subseteq W \subseteq t^{-N}\O^n$}
         \right\}.
     \]
-    is a projective variety.
+    \begin{Exercise}
+        Check that each $\Gr_N$ is a projective variety.
+    \end{Exercise}
     \begin{figure}[htb]
         \centering
         \begin{tikzpicture}[y={-0.5cm}, x={0.5cm}]
@@ -568,24 +575,40 @@ The affine Grassmannian is an increasing union of projective varieties.
 
 \subsection{Alternative descriptions}
 
+There are a couple of other useful ways to think about the affine Grassmannian.
+
 \subsubsection{Bundles}
 
 Let $D = \Spec \O$ and $D^× = \Spec \K$.
-Then $\Gr$ is the set of $G$-bundles on $D$, trivialized on $D^×$.
-Hence, if $\mathbb D = D \amalg_{D^×} D$ is the disc with two origins, we have
-\[
-    \lquot{L_+G}{\Gr} =
-    \dquot{L_+G}{LG}{L_+G} = 
-    \{ \text{$G$-bundles on $\mathbb D$}\}.
-\]
+
+\begin{Exercise}
+    Show that the Grassmannian $\Gr_G$ is the set of $G$-bundles on $D$, trivialized on $D^×$.
+\end{Exercise}
+
+Let $\mathbb D = D \amalg_{D^×} D$ is the disc with two zeros.
+\begin{Exercise}
+    Show that
+    \[
+        \lquot{L_+G}{\Gr} =
+        \dquot{L_+G}{LG}{L_+G} = 
+        \{ \text{$G$-bundles on $\mathbb D$}\}.
+    \]
+\end{Exercise}
+
+The reason that this description is useful is that in Geometric Langlands the automorphic moduli space is a space of bundles.
 
 \subsubsection{Topological}
 
 Let $K \subseteq G$ be a maximal compact and let $ΩK$ be the based polynomial\footnote{I.e., as maps $S¹ → K$ the loops have finite Fourier expansion} loop group on $K$.
-Then
-\[ \Gr \cong ΩK\]
-as topological spaces.
-In fact, $LG \cong ΩK × L_+G$.
+
+\begin{Exercise}
+    Show that
+    \[ \Gr \cong ΩK\]
+    as topological spaces.
+    (Hint: Show that $LG \cong ΩK × L_+G$.)
+\end{Exercise}
+
+Note that this gives $\Gr$ the structure of a group (though not of an \emph{algebraic} group).
 
 \begin{Exercise}
     Show that for $G = \PGL 2$ one has
@@ -597,7 +620,9 @@ In fact, $LG \cong ΩK × L_+G$.
 
 \subsection{A little structure theory}
 
-\subsubsection{Cartan}
+We have the following analogues of $p$-adic structure theory.
+
+\subsubsection{Cartan decomposition}
 
 There is an isomorphism of sets
 \[
@@ -607,12 +632,17 @@ There is an isomorphism of sets
     Λ_G^+,
 \]
 where $W$ is the Weyl group and $Λ^+_G$ the dominant coweights.
+Note that $Λ^+_G$ is also the dominant weights of the Langlands dual group.
+So this is a first hint that the geometry of this space will have something to do with the dual group, i.e.~we can interpret this as a first hint of Langlands duality.
 
-\subsubsection{Iwasawa}
 
+\subsubsection{Iwasawa decompostition}
+
+There is an isomorphism of sets
 \[
-    \lquot{N(\K)}{\Gr} = \dquot{N(\K)}{LG}{L_+G} \cong Λ_G.
+    \lquot{N(\K)}{\Gr} = \dquot{N(\K)}{LG}{L_+G} \cong Λ_G,
 \]
+where $N$ is the unipotent radical of a Borel of $G$.
 
 \todo{Example of $\PGL 2$.}
 
