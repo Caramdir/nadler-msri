@@ -710,14 +710,20 @@ There is an isomorphism of sets
 \]
 where $N$ is the unipotent radical of a Borel of $G$.
 
-\todo{Example of $\PGL 2$.}
+\todo{34:00--41:00 (Example of $\PGL 2$).}
 
 \subsection[Geometric Satake]{geometric satake}
 
 \subsubsection{Geometric \texorpdfstring{$L_+G$}{L+G}-invariant \enquote{distributions} on \texorpdfstring{$\Gr$}{Gr}}
 
-These lead to the category $\cat P_{L_+G}(\Gr)$ of $L_+G$-equivariant perverse sheaves on $\Gr$.
-This category is Abelian and semisimple.
+
+We want to consider $L_+G$-equivariant \enquote{geometric distributions} on $\Gr$.
+The function--sheaf correspondence tells us that a good way to obtain constructible functions on a variety is to look at sheaves and take traces of Frobenius. 
+This hints that to get a more structured version of \enquote{functions}, one should pass to constructible sheaves.
+This is exactly what we are going to do now without further justification.
+
+So we are going to pass to the category $\cat P_{L_+G}(\Gr)$ of $L_+G$-equivariant perverse sheaves on $\Gr$\todo{Intro to perverse sheaves.}.
+This category is Abelian (always) and semisimple (in this situation!).
 The simple objects are given by the intersection complexes $\IC^λ = \IC(\Gr^λ)$, where $\Gr^λ \subseteq \Gr$ is the closure of the $L_+G$-orbit indexed by $λ ∈ \rquot{Λ_G}W$.
 This is the \enquote{best basis of the Hecke algebra.}
 
@@ -731,16 +737,15 @@ and
 \[
     \dim \res{\IC^λ}μ = \dim \operatorname{wt}_μ(V^λ)
 \]
-for any point $λ$ in $\Gr^μ$.
+for any point $μ$ in $\Gr^λ$.
 
-\subsubsection{Geometric Satake}
-
-\begin{Thm}
-    There is an isomorphism of tensor categories
+\begin{Thm}[Geometric Satake]
+    There is an isomorphism of tensor categories (see below)
     \[
         \cat P_{L_+G}(\Gr) \cong \cat{Rep}(\ld G).
     \]
 \end{Thm}
+\todo{53:00--}
 
 \subsubsection{Where is the tensor structure?}
 
