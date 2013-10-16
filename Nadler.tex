@@ -739,62 +739,84 @@ and
 \]
 for any point $μ$ in $\Gr^λ$.
 
-\begin{Thm}[Geometric Satake]
+\begin{Thm}[Geometric Satake \cite{MirkovicVilonen:2007:GLdualityRepresentations}]
     There is an isomorphism of tensor categories (see below)
     \[
         \cat P_{L_+G}(\Gr) \cong \cat{Rep}(\ld G).
     \]
 \end{Thm}
-\todo{53:00--}
 
 \subsubsection{Where is the tensor structure?}
 
-The category $\cat P_{L_+G}(\Gr)$ has a tensor structure $*$ given by the usual convolution pattern via $\lquot{L_+G}{\Gr} = \{\text{$G$-bundles on $\mathbb D$}\}$.
-However there is an alternative, \enquote{better} point of view given by the \emph{fusion} product.
+The category $\cat P_{L_+G}(\Gr)$ has a monoidal convolution structure $*$ just as one usually has for distributions.
+To see this geometrically, remember that $\lquot{L_+G}{\Gr} = \{\text{$G$-bundles on $\mathbb D$}\}$.
+The convolution the comes from concatenating the discs $\mathbb D$.
+There are two \enquote{mysteries} here:
+\begin{itemize}
+    \item When one convolves two intersection cohomology complexes, one doesn't get just arbitrary complexes, but again sums of intersection cohomology complexes, i.e.~the convolution $*$ is defined on $\cat P_{L_+G}(\Gr)$.
+    \item Why is this convolution commutative?
+        For the classical spherical Hecke algebra, there are various ways to show that convolution of functions is commutative, e.g.~the Gelfand trick.
+        But here one has to give more structure: for a monoidal category to be commutative, one needs to give a coherent collection of commutativity isomorphisms.
+\end{itemize}
+We will now give an alternative, \enquote{better} viewpoint to the monoidal structure, that makes the commutativity evident.
+This \emph{fusion} product was discovered by Beilinson and Drinfeld and is inspired by mathematical physics.
 
 Recall that $\Gr$ parametrizes $G$-bundles on $D$ with a trivialization on $D^×$.
-Let $C$ be and smooth curve and $c ∈ C$ a closed point.
+More general we can consider a smooth curve $C$ with a closed point $c ∈ C$.
 By extending the bundles one sees that $\Gr$ is also given by $G$-bundles on $C$ with a trivialization of $C \setminus c$.
-Note that from this perspective all points of $C$ look similar.
+Note that from this perspective all points of $C$ look similar: for each point $c$ the Grassmannian looks the same.
+This is the main difference from the arithmetic setting: the spherical Hecke algebra changes with the prime.
 
-We now introduce the \emph{Beilinson--Drinfeld} (or \emph{BD}) Grassmannian.
-Let $S = \{c_i : 1 \le i \le k\}$ be a collection of closed points in $C$.
-Then set
+We now introduce a multi-pointed version of the Grassmannian, called the \emph{Beilinson--Drinfeld} (or \emph{BD}) Grassmannian.
+Let $S = \{c_i : 1 \le i \le k\}$ be a finite collection of closed points of $C$.
+We set
 \[
     \Gr^{(k)} = \left\{ \text{$G$-bundles on $C$, trivialized away from $S$} \right\}.
 \]
+In other words $\Gr^{(k)}$ consists of $G$-bundles with a section away from the fibers of the points in $S$.
 \begin{Exercise}
+    Show that
     \[
         \Gr^{(k)} = \smash[t]{\prod\limits_{\mathclap{i=1}}^k \Gr}.
     \]
 \end{Exercise}
-Now we allow $S$ to move and points to collide. 
+Now we allow the divisor $S$ to move and points to collide. 
+So we start with $k$ copies of the Grassmannian and when some points collide, we will end up with a smaller number of copies of the Grassmannian.
 This yields an evidently commutative tensor product of $\cat P_{L_+G}(\Gr)$ via taking nearby cycles as points collide.
 
 \subsubsection{Derived version}
 
-Instead of just the Abelian category of perverse sheaves, consider the full $L_+G$-equivariant, constructible derived category $D_{\mathrm{c},\, L_+G}(\Gr)$.
+Instead of just the Abelian category of perverse sheaves, we will now consider the full $L_+G$-equivariant, constructible derived category $D_{\mathrm{c},\, L_+G}(\Gr)$.
 We would like a spectral interpretation of this category.
 
-In view of the $\lquot{L_+G}{\Gr} = \{ \text{$G$-bundles on $\mathbb D$}\}$, we expect 
+In view of the identification $\lquot{L_+G}{\Gr} = \{ \text{$G$-bundles on $\mathbb D$}\}$, the Langlands philosophy leads us to expect the spectral side to be the analogue of Galois representations on $\mathbb D$, i.e.~local systems on $\mathbb D$.
+Using $\mathbb D = D \amalg_{D^×} D$ a local system on $\mathbb D$ is give by a monodromy over $D^×$ that has to be trivial on $D$ and then trivial again on $D$ (and the whole thing has to be up to conjugation).
+Thus, we obtain
 \[
     \Loc_{\ld G}(\mathbb D) =
     \rquot{\left( \{1\} \mathbin{×\limits_{\ld G}} \{1\} \right)}{\ld G} =
-    \rquot{\ld{\liealg g}[1]}{\ld G}
+    \rquot{\ld{\liealg g}[-1]}{\ld G},
 \]
-to appear on the spectral side, where $\ld{\liealg g}[1] = \Spec\operatorname{Sym}\left( (\ld{\liealg g})^*[1] \right)$.
+where $\ld{\liealg g}[-1] = \Spec\operatorname{Sym}\left( (\ld{\liealg g})^*[-1] \right)$.
 
-Consider $\catCoh{\Loc_{\ld G}(\mathbb D)}$.
-Note that $H^{-1}\mathbb L_{\Loc_{\ld G}(\mathbb D)} \cong (\ld{\liealg g})^*$.
-Let $N \subseteq (\ld{\liealg g})^*$ be the nilpotent cone.
-\begin{Thm}
+Consider $\catCoh{\Loc_{\ld G}(\mathbb D)}$, i.e.~$\ld G$-invariant dg modules over $\operatorname{Sym}\left( (\ld{\liealg g})^*[-1] \right)$.
+Note that $H^{-1}\mathbb L_{\Loc_{\ld G}(\mathbb D)} \cong \ld{\liealg g}^*$.
+This means that we can consider coherent sheaves with support in various conical loci in $\ld{\liealg g}^*$.
+In particular the nilpotent cone $\mathcal N \subseteq \ld{\liealg g}^*$ is such a locus.
+\begin{Thm}[Derived Geometric Satake {\cite{BezrukavnikovFinkelberg:2008:EquivariantSatakeCategoryAndKostantWhittakerReduction,ArinkinGaitsgory:arXiv:SingularSupport}}]
+    There is an equivalence of monoidal categories
     \[
-        D_{\mathrm c}(\Bun_G(\mathbb D)) \cong
         D_{\mathrm c,\, L_+G}(\Gr) \cong
-        \cat{Coh}_N(\Loc_{\ld G}(\mathbb D)).
-        \qedhere
+        \cat{Coh}_{\mathcal N}(\Loc_{\ld G}(\mathbb D)).
     \]
 \end{Thm}
+\begin{Cor}
+    There is an equivalence of monoidal categories
+    \[
+        D_{\mathrm c}(\Bun_G(\mathbb D)) \cong
+        \cat{Coh}_{\mathcal N}(\Loc_{\ld G}(\mathbb D)).
+    \] 
+\end{Cor}
 \section{geometric traces}
 
 \printbibliography
